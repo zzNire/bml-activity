@@ -1,0 +1,1 @@
+export const selected_item = state => state.selected_item;
