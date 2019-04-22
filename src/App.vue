@@ -5,7 +5,7 @@
    </div>
   <div class="other"></div>
   <div class="mouse-follow">
-    <sale-info   :time="this.menu[1].sale_info" :follow_type="1"></sale-info>
+    <sale-info  v-if="selected_item+1" :time="this.menu[selected_item].sale_info" :follow_type="1"></sale-info>
   </div>
   </div>
 
