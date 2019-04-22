@@ -4,8 +4,8 @@
        <my-tab :item="item" :index="index" v-for="(item,index) in menu" :key="item.str" ></my-tab>
    </div>
   <div class="other"></div>
-  <div class="mouse-follow">
-    <sale-info  v-if="selected_item+1" :time="this.menu[selected_item].sale_info" :follow_type="1"></sale-info>
+  <div class="mouse-follow" :class="{hideFollow:!(selected_item+1)}">
+    <sale-info   :time="followInfo" :follow_type="1" ></sale-info>
   </div>
   </div>
 
@@ -69,7 +69,14 @@ export default {
   computed:{
     ...mapGetters([
       'selected_item'
-    ])
+    ]),
+    followInfo(){
+        if(this.menu[this.selected_item]){
+          return this.menu[this.selected_item].sale_info;
+        }else{
+          return undefined;
+        }
+    }
   },
   methods:{
     //generator 异步任务 自动机
@@ -162,5 +169,9 @@ export default {
   position: absolute;
   left: 0;
   top:0;
+}
+
+.hideFollow{
+  opacity: 0;
 }
 </style>

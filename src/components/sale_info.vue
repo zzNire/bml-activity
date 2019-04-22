@@ -1,8 +1,16 @@
 <template>
     <div class="sale-info">
         <p v-if="follow_type" class="alert follow">查看详情</p>
-        <p v-if="follow_type" class="title_en"><span class="follow" v-for="(word,index) in flatWords[0]" :key="index">{{word}}</span></p>
-        <p v-if="follow_type" class="title_en"><span class="follow" v-for="(word,index) in flatWords[1]" :key="index">{{word}}</span></p>
+        <p v-if="follow_type" class="title_en">
+            <span  class="follow" >{{flatWords[0]}} </span>
+            <span  class="follow" >{{flatWords[1]}} </span>
+            <span  class="follow" >{{flatWords[2]}} </span>
+            <br v-if="flatWords[3]!==''">
+            <span  class="follow" >{{flatWords[3]}} </span>
+            <span  class="follow" >{{flatWords[4]}} </span>
+           
+        </p>
+      
         <p class="info-title follow">{{time.str}}</p>
         <p class='time follow'>
             <span class="time-num">{{time.time[0]|fillNum}}</span>
@@ -26,7 +34,12 @@ export default {
         time:{
             type:Object,
             default:function(){
-                return 0;
+                return {
+                    time:['',''],
+                    sale_time:['',''],
+                    str:'',
+                    str_en:''
+                };
             }
         },
         follow_type:{
@@ -36,8 +49,9 @@ export default {
     },
     computed:{
         flatWords(){
+            if(!this.time.str) return ['','','','',''];
             var word = this.time.str_en.split(' ');
-            return [word.slice(0,3),word.slice(3)];
+            return word.length === 3 ? word.concat(['','']): word;
         }
     },
     filters:{
@@ -67,8 +81,9 @@ export default {
     font-weight: bolder;
 }
 
-span.title_en {
+.title_en span {
     display: inline-block;
+    margin-right: 2vh;
 }
 
 .info-title{
