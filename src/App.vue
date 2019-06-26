@@ -101,6 +101,11 @@ export default {
           m.x = e.clientX;
           m.y = e.clientY;
         })
+        document.getElementById('app').addEventListener('touchmove', function (e) {
+          e.preventDefault();
+          m.x = e.targetTouches[0].clientX;
+          m.y = e.targetTouches[0].clientY;
+        })
       }
       init.prototype.start = function () {
         function initOBJ(parent,cx,cy,dom){
@@ -130,9 +135,11 @@ export default {
         */
 
 
-        setInterval(function() {
-				for (var i = 0; i < N; i++) OBJ[i].run();
-        }, 16);
+        function f() {
+         for (var i = 0; i < N; i++) OBJ[i].run();
+         window.requestAnimationFrame(f)
+        }
+        window.requestAnimationFrame(f)
       }
 
       var CObj = function (p, cx, cy, dom) {
@@ -151,6 +158,7 @@ export default {
       }
 
       CObj.prototype.run = function () {
+
         if (!this.parent) {
           this.x0 = m.x;
           this.y0 = m.y;
@@ -158,6 +166,11 @@ export default {
           this.x0 = this.parent.x;
           this.y0 = this.parent.y;
 
+        }
+
+        if(Math.abs(this.PX - this.x0)<1 && Math.abs(this.PY - this.y0)<1) {
+          this.css.transform = `matrix(1,0,0,1,${this.x0}px,${this.y0}px)`;
+          return;
         }
         this.x = this.PX += (this.ddx += ((this.x0 - this.PX - this.ddx) + this.cx) / rs) / sp;
         this.y = this.PY += (this.ddy += ((this.y0 - this.PY - this.ddy) + this.cy) / rs) / sp;
@@ -194,7 +207,7 @@ export default {
 .menu{
   display: flex;
   height: 100vh;
-  width: 90vw;
+  width: 100vw;
   
 }
 

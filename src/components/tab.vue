@@ -2,7 +2,8 @@
     <div class="tab" :class="{mouseEnter:isMouseEnter}" :style="{backgroundImage:`url(${item.background_url})`}" >
         <div class="front-bg" 
         @mouseenter="mouseEnter"
-        @mouseleave="mouseLeave"></div>
+        @mouseleave="mouseLeave"
+        @touchmove='touchMove'></div>
         <div class="background" :class="{bgEnter:isMouseEnter,otherEnter:selected_item !== this.index && selected_item !== -1}" >
         <div class="tab-icon">
             <img :src="item.icon">
@@ -12,7 +13,7 @@
             <img class="sale-btn" src="">
         </div>
          <transition name='sale-info'>
-        <div v-if="selected_item !== index" class="sale-information">
+        <div class="sale-information">
             <sale-info :time="item.sale_info"></sale-info>
         </div>
          </transition>
@@ -55,6 +56,10 @@ export default {
         mouseLeave(){
             this.isMouseEnter = false;
             this.setSelectItem(-1);
+        },
+        touchMove(e){
+            console.log(e.touchTargets[0])
+           
         }
         
     },
@@ -69,17 +74,22 @@ export default {
 <style scoped>
 .tab{
     position: relative;
-    flex-basis:30vw;
+    width:33.333vw;
     height: 100vh;
     background-size: cover;
     background-position: 50% 50%;
-    transition: flex-basis .3s ease-in-out, -webkit-flex-basis .3s ease-in-out, -webkit-flex-basis .3s ease-in-out;
+    transition: all .3s ease-in-out, -webkit-flex-basis .3s ease-in-out, -webkit-flex-basis .3s ease-in-out;
    
 }
 
+.tab:hover .sale-information{
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
 .mouseEnter{
-    flex-basis:40vw; 
-    transition: flex-basis .3s ease-in-out, -webkit-flex-basis .3s ease-in-out, -webkit-flex-basis .3s ease-in-out;
+    width:40vw; 
+    transition: all .3s ease-in-out, -webkit-flex-basis .3s ease-in-out, -webkit-flex-basis .3s ease-in-out;
 }
 
 .front-bg{
@@ -124,7 +134,7 @@ export default {
     width:83%;
     height:6vh;
     line-height: 6vh;
-    font-size: 20px;
+    font-size: 1vw;
     text-align: right;
     margin: 0;
     padding-right: 5%;

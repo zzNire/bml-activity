@@ -1,3 +1,3 @@
 export default  {
-    selected_item : -1,
+    selected_item : 0,
 }

@@ -10,7 +10,7 @@
             <span  class="follow" >{{flatWords[4]}} </span>
            
         </p>
-      
+
         <p class="info-title follow">{{time.str}}</p>
         <p class='time follow'>
             <span class="time-num">{{time.time[0]|fillNum}}</span>

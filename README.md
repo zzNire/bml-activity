@@ -34,11 +34,24 @@ CObj.prototype.run = function () {
 
 ## 问题
 
-#### transform
+### transform
 只对 block 或 inlineblock 生效，像`<span>`这种标签不生效
 
-#### vm vh
+### vm vh
 最小值为1 
+
+### background
+背景铺满dom，居中
+
+```css
+background-size: cover;
+background-position: 50% 50%;
+```
+
+### flex
+flex-basis:30vw;
+
+在分配剩余空间前的大小，浏览器根据这个属性，计算主轴是否有多余空间
 
 # bml_activity
 
