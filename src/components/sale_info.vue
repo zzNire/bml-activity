@@ -100,9 +100,6 @@ export default {
     font-size: 1vw;
     font-weight: bolder;
 }
-.sale-time{
- 
-}
 .sale-time-num{
     display: inline-block;
     font-weight: bolder;
