@@ -1,3 +1,11 @@
+## 问题
+
+#### transform
+只对 block 或 inlineblock 生效，像`<span>`这种标签不生效
+
+#### vm vh
+最小值为1 
+
 # bml_activity
 
 ## Project setup

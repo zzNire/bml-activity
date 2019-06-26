@@ -67,7 +67,7 @@ export default {
 <style scoped>
 .sale-info{
     text-align: left;
-    
+    position: relative;
     color:white;
 }
 
@@ -87,27 +87,33 @@ export default {
 }
 
 .info-title{
-    font-size: 1.25vw;
+    font-size: 1vw;
 }
 
 .time-num{
-    font-size:4.6vw;
+    display: inline-block;
+    font-size:3vw;
     font-weight: bolder;
 }
 
 .sale-title{
-    font-size: 1.25vw;
+    font-size: 1vw;
     font-weight: bolder;
 }
+.sale-time{
+ 
+}
 .sale-time-num{
+    display: inline-block;
     font-weight: bolder;
-    font-size:4.6vw;
+    font-size:3vw;
     color: rgba(0,0,0,0);
     -webkit-text-stroke:1px white;
    
 }
 .time-dscrp{
-    font-size: 1.25vw;
+    display: inline-block;
+    font-size: 1vw;
     margin: 0 1vw;
 }
 

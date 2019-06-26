@@ -124,7 +124,7 @@ export default {
     width:83%;
     height:6vh;
     line-height: 6vh;
-    font-size: 1.5vw;
+    font-size: 20px;
     text-align: right;
     margin: 0;
     padding-right: 5%;
